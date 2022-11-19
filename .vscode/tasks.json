@@ -14,9 +14,10 @@
             "label": "build",
             "command": "cl.exe",
             "args": [
+                "/nologo",
                 "/Zi",
                 "/EHsc",
-                "/nologo",
+                "/I${workspaceFolder}\\includes",
                 "/Fe${workspaceFolder}\\bin\\debug\\mac.exe",
                 "/Fd${workspaceFolder}\\bin\\debug\\",
                 "/Fo${workspaceFolder}\\bin\\debug\\",

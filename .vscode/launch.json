@@ -5,7 +5,7 @@
         "type": "cppvsdbg",
         "request": "launch",
         "program": "${workspaceFolder}\\bin\\debug\\mac.exe",
-        "args": [],
+        "args": [ "--help" ],
         "stopAtEntry": false,
         "cwd": "${workspaceFolder}",
         "environment": [],

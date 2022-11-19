@@ -1,0 +1,41 @@
+{
+    "tasks": [
+        {
+            "type": "process",
+            "label": "Prebuild",
+            "command": "cmd.exe",
+            "args": [
+                "/C",
+                "${workspaceFolder}\\.vscode\\pre-build.bat"
+            ]
+        },
+        {
+            "type": "cppbuild",
+            "label": "build",
+            "command": "cl.exe",
+            "args": [
+                "/Zi",
+                "/EHsc",
+                "/nologo",
+                "/Fe${workspaceFolder}\\bin\\debug\\mac.exe",
+                "/Fd${workspaceFolder}\\bin\\debug\\",
+                "/Fo${workspaceFolder}\\bin\\debug\\",
+                "${workspaceFolder}\\src\\*.cpp"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$msCompile"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": [
+                "Prebuild"
+            ]
+        }
+    ],
+    "version": "2.0.0"
+}

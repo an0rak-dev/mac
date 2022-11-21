@@ -32,8 +32,6 @@ Tools needed :
 
 ## Credits & License
 
-This project was created by [Sylvain Nieuwlandt](https://an0rak.dev) which 
-holds the complete Copyright on it. You do NOT have the permission to share,
-read, update, fork... or do whatever with any part of it (including the source
-code and final binaries) without the explicit (and written) authorization of 
-Sylvain Nieuwlandt.
+This project was created by [Sylvain Nieuwlandt](https://an0rak.dev)
+and was released under the Apache 2.0 License, which you can find a complete
+copy of [here](./LICENSE).

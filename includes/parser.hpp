@@ -2,6 +2,7 @@
 
 #include <map>
 #include <string>
+#include <vector>
 
 /**
  * Parser is the base class of the command line parsers.
@@ -23,7 +24,7 @@ class Parser {
          * Returns true if the given argument (a mandatory or an optional one)
          * was passed during the invokation.
         */
-        bool contains(const char* argValue);
+        bool containsOption(std::string argValue);
 
         /**
          * Returns the value of the given argument if it was passed during the 
@@ -33,7 +34,9 @@ class Parser {
          * an empty string.
          * If the argument was not present, then throws an exception.
         */
-        std::string get(const char* arg);
+        std::string getOption(std::string arg);
+
+        std::vector<std::string> getInputs();
 
     protected:
         /**
@@ -42,5 +45,7 @@ class Parser {
          * For example --help, should be parsed as '{"--help", ""}', and 
          * "--size 10", should be parsed as '{"--size", "10"}'.
         */
-        std::map<std::string, std::string> elements;
+        std::map<std::string, std::string> options;
+
+        std::vector<std::string> inputs;
 };

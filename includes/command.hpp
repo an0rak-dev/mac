@@ -1,6 +1,8 @@
 #pragma once
 
 #include <functional> 
+#include <optional>
+#include <string>
 #include <vector>
 #include "arg.hpp"
 #include "parser.hpp"
@@ -10,23 +12,28 @@
 */
 class Command {
     public:
-        Command(const char* name);
+        Command(std::string name);
         virtual ~Command();
 
         /**
          * Set the help text of the command to be displayed if it's invoked with '--help'.
         */
-        void setHelp(const char* helpTxt);
+        void setHelp(std::string helpTxt);
 
         /**
          * Set the behaviour of the command.
         */
-        void setAction(std::function<void(Parser&)> func);
+        void setAction(std::function<void(Command&)> func);
 
         /**
          * Add a possible argument that the command may accept.
         */
         void addArgument(Arg &argument);
+
+        /**
+         * Return the value of the argument with the given name if it's set.
+        */
+        std::optional<std::string> getArgument(std::string argName);
         
         /**
          * Run the action linked to the calling command.
@@ -42,10 +49,11 @@ class Command {
     private:
         void printUsage();
         void printHelp();
-        void printSingleOption(const char* optionName, const char* description);
-        const char* name;
-        const char* helpText;
+        void printSingleOption(std::string optionName, std::string description);
+        void fillArgs(Parser& parser);
+        std::string name;
+        std::string helpText;
         std::vector<Arg> mandatoryArguments;
         std::vector<Arg> optionalArguments;
-        std::function<void(Parser&)> action;
+        std::function<void(Command&)> action;
 };

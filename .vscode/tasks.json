@@ -17,6 +17,7 @@
                 "/nologo",
                 "/Zi",
                 "/EHsc",
+                "/std:c++latest",
                 "/I${workspaceFolder}\\includes",
                 "/Fe${workspaceFolder}\\bin\\debug\\mac.exe",
                 "/Fd${workspaceFolder}\\bin\\debug\\",

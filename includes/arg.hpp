@@ -1,26 +1,31 @@
 #pragma once
 
+#include <string>
+
 /**
  Arg represents a single command line argument that should be pass during program invokation.
 */
 class Arg {
     public:
-        Arg(const char* name, bool optional=false);
+        Arg(std::string name, bool optional=false);
         virtual ~Arg();
         /**
          Set the description of the argument if needed for a help command.
         */
-        Arg* setDescription(const char* desc);
+        Arg* setDescription(std::string desc);
 
         /**
          Returns true if the argument is an option, false if it's a mandatory one.
         */
         bool isOptional() const;
-        const char* getName() const;
-        const char* getDescription() const;
+        std::string getName() const;
+        std::string getDescription() const;
+        std::string getValue() const;
+        void setValue(std::string val);
 
     private:
-        const char* name;
+        std::string name;
         bool optional;
-        const char* description;
+        std::string description;
+        std::string value;
 };

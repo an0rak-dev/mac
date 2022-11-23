@@ -1,3 +1,4 @@
+#include <fstream>
 #include <iostream>
 
 #include "arg.hpp"
@@ -21,5 +22,18 @@ int main(int argc, char** argv) {
 
 void run(Command& cmd) {
     std::string filepath = cmd.getArgument("filepath").value();
-    std::cout << "file is : " << filepath << std::endl;
+    std::ifstream inputStream(filepath);
+    if (!inputStream.is_open()) {
+        throw std::exception("Failed to open the wanted file");
+    }
+    std::string sourceContent = "";
+    while (inputStream.good()) {
+        std::string line = "";
+        std::getline(inputStream, line);
+        sourceContent = sourceContent.append(line).append("\n");
+    }
+    
+    std::cout << "Content of the file is :" << std::endl << std::endl 
+        << sourceContent
+        << std::endl << std::endl;
 }

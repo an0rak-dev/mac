@@ -22,6 +22,7 @@
                 "/Fe${workspaceFolder}\\bin\\debug\\mac.exe",
                 "/Fd${workspaceFolder}\\bin\\debug\\",
                 "/Fo${workspaceFolder}\\bin\\debug\\",
+                "${workspaceFolder}\\src\\cli\\*.cpp",
                 "${workspaceFolder}\\src\\*.cpp"
             ],
             "options": {

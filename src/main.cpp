@@ -1,8 +1,10 @@
+#include <fstream>
 #include <iostream>
 
-#include "arg.hpp"
-#include "command.hpp"
-#include "standardparser.hpp"
+#include "cli/arg.hpp"
+#include "cli/command.hpp"
+#include "cli/standardparser.hpp"
+#include "file.hpp"
 
 void run(Command& cmd);
 
@@ -21,5 +23,13 @@ int main(int argc, char** argv) {
 
 void run(Command& cmd) {
     std::string filepath = cmd.getArgument("filepath").value();
-    std::cout << "file is : " << filepath << std::endl;
+    File sourceFile(filepath);
+    if (!sourceFile.exists()) {
+        throw std::exception("Wanted file not found.");
+    }
+    std::string sourceContent = sourceFile.read();
+    
+    std::cout << "Content of the file is :" << std::endl << std::endl 
+        << sourceContent
+        << std::endl << std::endl;
 }

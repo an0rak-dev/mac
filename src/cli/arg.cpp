@@ -1,4 +1,4 @@
-#include "arg.hpp"
+#include "cli/arg.hpp"
 
 Arg::Arg(std::string name, bool optional) : name(name), optional(optional) {
 

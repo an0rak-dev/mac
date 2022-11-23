@@ -1,9 +1,9 @@
 #include <fstream>
 #include <iostream>
 
-#include "arg.hpp"
-#include "command.hpp"
-#include "standardparser.hpp"
+#include "cli/arg.hpp"
+#include "cli/command.hpp"
+#include "cli/standardparser.hpp"
 
 void run(Command& cmd);
 

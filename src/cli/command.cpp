@@ -1,6 +1,6 @@
-#include <iostream>
+#include "cli/command.hpp"
 
-#include "command.hpp"
+#include <iostream>
 
 Command::Command(std::string name) : name(name) {
 

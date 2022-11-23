@@ -4,6 +4,7 @@
 #include "cli/arg.hpp"
 #include "cli/command.hpp"
 #include "cli/standardparser.hpp"
+#include "file.hpp"
 
 void run(Command& cmd);
 
@@ -22,16 +23,11 @@ int main(int argc, char** argv) {
 
 void run(Command& cmd) {
     std::string filepath = cmd.getArgument("filepath").value();
-    std::ifstream inputStream(filepath);
-    if (!inputStream.is_open()) {
-        throw std::exception("Failed to open the wanted file");
+    File sourceFile(filepath);
+    if (!sourceFile.exists()) {
+        throw std::exception("Wanted file not found.");
     }
-    std::string sourceContent = "";
-    while (inputStream.good()) {
-        std::string line = "";
-        std::getline(inputStream, line);
-        sourceContent = sourceContent.append(line).append("\n");
-    }
+    std::string sourceContent = sourceFile.read();
     
     std::cout << "Content of the file is :" << std::endl << std::endl 
         << sourceContent
